@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Movie } from './entities/movie.entity';
+import { updateMovieDto } from "./dto/update-movie.dto";
 
 @Injectable()
 export class MoviesService {
@@ -26,7 +27,7 @@ export class MoviesService {
     });
   }
 
-  update(id: number, updateData) {
+  update(id: number, updateData: updateMovieDto) {
     const movie = this.getOne(id);
     this.deleteOne(id);
     this.movies.push({ ...movie, ...updateData }); // Update 처럼 만들기 위함

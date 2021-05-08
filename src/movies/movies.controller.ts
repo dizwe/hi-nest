@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { createMovieDto } from './dto/create-movie.dto';
+import { updateMovieDto } from "./dto/update-movie.dto";
 
 @Controller('movies') // basic Router
 export class MoviesController {
@@ -49,7 +50,7 @@ export class MoviesController {
   }
 
   @Patch('/:id')
-  patch(@Param('id') movieId: number, @Body() updateData) {
+  patch(@Param('id') movieId: number, @Body() updateData: updateMovieDto) {
     // 순서대로 들어가서 밑에 ... 쓰면 key Override 됨!
     return this.moviesService.update(movieId, updateData);
   }
