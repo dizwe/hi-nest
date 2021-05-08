@@ -10,7 +10,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
-import { createMovieDto } from "./dto/create-movie.dto";
+import { createMovieDto } from './dto/create-movie.dto';
 
 @Controller('movies') // basic Router
 export class MoviesController {
@@ -27,7 +27,7 @@ export class MoviesController {
   }
 
   @Get('/:id')
-  getOne(@Param('id') movieId: string) {
+  getOne(@Param('id') movieId: number) {
     const movie = this.moviesService.getOne(movieId);
     if(!movie){
       throw new NotFoundException(`movie with ${movieId} Not Found`);
@@ -43,13 +43,13 @@ export class MoviesController {
   }
 
   @Delete('/:id')
-  remove(@Param('id') movieId: string) {
+  remove(@Param('id') movieId: number) {
     // 여기서 param은 decorater
     return this.moviesService.deleteOne(movieId);
   }
 
   @Patch('/:id')
-  patch(@Param('id') movieId: string, @Body() updateData) {
+  patch(@Param('id') movieId: number, @Body() updateData) {
     // 순서대로 들어가서 밑에 ... 쓰면 key Override 됨!
     return this.moviesService.update(movieId, updateData);
   }

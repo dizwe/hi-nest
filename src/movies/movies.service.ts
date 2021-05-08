@@ -9,13 +9,13 @@ export class MoviesService {
     return this.movies;
   }
 
-  getOne(id: string): Movie {
+  getOne(id: number): Movie {
     // +id == parseInt
-    return this.movies.find((movie) => movie.id === +id);
+    return this.movies.find((movie) => movie.id === id);
   }
 
-  deleteOne(id: string): boolean {
-    this.movies = this.movies.filter((movie) => movie.id !== +id);
+  deleteOne(id: number): boolean {
+    this.movies = this.movies.filter((movie) => movie.id !== id);
     return true;
   }
 
@@ -26,7 +26,7 @@ export class MoviesService {
     });
   }
 
-  update(id: string, updateData) {
+  update(id: number, updateData) {
     const movie = this.getOne(id);
     this.deleteOne(id);
     this.movies.push({ ...movie, ...updateData }); // Update 처럼 만들기 위함
