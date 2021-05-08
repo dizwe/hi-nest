@@ -10,6 +10,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
+import { createMovieDto } from "./dto/create-movie.dto";
 
 @Controller('movies') // basic Router
 export class MoviesController {
@@ -36,7 +37,7 @@ export class MoviesController {
 
   // 201 Created 가 뜸1
   @Post()
-  create(@Body() movieData) {
+  create(@Body() movieData: createMovieDto) {
     // Body를 받아야 하면 Body라고 명시해야 함(express와 매우 유사)
     return this.moviesService.create(movieData);
   }
