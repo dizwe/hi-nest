@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { createMovieDto } from './dto/create-movie.dto';
-import { updateMovieDto } from "./dto/update-movie.dto";
+import { updateMovieDto } from './dto/update-movie.dto';
 
 @Controller('movies') // basic Router
 export class MoviesController {
